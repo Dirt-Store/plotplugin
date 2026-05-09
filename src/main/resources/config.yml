@@ -1,0 +1,163 @@
+# PlotPlugin Configuration
+
+settings:
+  # Maximum number of days a plot can be owned
+  max-duration-days: 12
+  # Base purchase: cost and days granted
+  buy-cost: 30
+  buy-days: 3
+  # Renewal cost per day
+  renew-cost-per-day: 10
+
+currency:
+  # The currency item (set via /plot setcoin)
+  # Stored as serialized ItemMeta - do not edit manually
+  item: null
+
+messages:
+  prefix: "&8[&bPlot&8] &r"
+  plot-created: "&aPlot &e{name} &acreated successfully."
+  plot-deleted: "&aPlot &e{name} &adeleted."
+  plot-not-found: "&cPlot &e{name} &cnot found."
+  plot-already-exists: "&cA plot with name &e{name} &calready exists."
+  region-not-found: "&cWorldGuard region &e{name} &cnot found."
+  no-permission: "&cYou do not have permission to do that."
+  break-sign: "&eBreak a sign to register it as the plot sign."
+  sign-registered: "&aSign registered for plot &e{name}&a."
+  sign-break-denied: "&cYou cannot break this sign. Use /plot delete to remove the plot first."
+  not-owner: "&cYou are not the owner of this plot."
+  not-owner-or-manager: "&cYou are not the owner or a manager of this plot."
+  bought: "&aYou purchased plot &e{name} &afor &e{cost} &acurrency items. Duration: &e{days} &adays."
+  not-enough-currency: "&cYou need &e{cost} &ccurrency items to buy this plot."
+  plot-not-available: "&cThis plot is not available for purchase."
+  member-added: "&aAdded &e{player} &aas a member of plot &e{name}&a."
+  member-removed: "&aRemoved &e{player} &afrom plot &e{name}&a."
+  manager-added: "&aAdded &e{player} &aas a manager of plot &e{name}&a."
+  manager-removed: "&aRemoved &e{player} &afrom managers of plot &e{name}&a."
+  player-not-found: "&cPlayer &e{player} &cnot found."
+  already-member: "&e{player} &cis already a member."
+  already-manager: "&e{player} &cis already a manager."
+  already-owner: "&e{player} &cis already the owner of this plot."
+  not-member: "&e{player} &cis not a member."
+  not-manager: "&e{player} &cis not a manager."
+  cannot-manage-owner: "&cYou cannot manage the owner or other managers."
+  timer-paused: "&aTimer for plot &e{name} &ahas been paused."
+  timer-unpaused: "&aTimer for plot &e{name} &ahas been resumed."
+  whitelist-enabled: "&aGlobal whitelist enabled. All timers paused."
+  whitelist-disabled: "&aGlobal whitelist disabled. All timers resumed."
+  plot-expired: "&cPlot &e{name} &chas expired."
+  transferred: "&aPlot &e{name} &atransferred to &e{player}&a."
+  coin-set: "&aCurrency item set successfully."
+  coin-not-set: "&cNo currency item has been set. Use /plot setcoin."
+  no-item-in-hand: "&cYou must be holding an item."
+  renew-success: "&aRenewed plot &e{name} &afor &e{days} &adays. Cost: &e{cost} &acurrency items."
+  max-duration: "&cThis plot is already at the maximum duration of &e{max} &cdays."
+  plot-sign-missing: "&cThis plot has no sign registered."
+  input-member-name: "&ePlease type the player name in chat (or 'cancel' to abort)..."
+  input-transfer-name: "&ePlease type the name of the new owner in chat (or 'cancel' to abort)..."
+  input-cancelled: "&cInput cancelled."
+
+sign:
+  # Lines displayed on the sign
+  line-available: "&2[Available]"
+  line-owned: "&4[Owned]"
+  line-paused: "&6[Paid]"
+  line-fixed: "&9[Fixed]"
+  line-price: "&ePrice: &f{price}"
+  line-owner: "&7Owner: &f{owner}"
+  line-time: "&7{time}"
+  line-none: "&7None"
+
+gui:
+  # ── Plot view GUI ──────────────────────────────────────────────────────────
+  plot-gui:
+    title: "&8Plot: &b{name}"
+    rows: 6
+
+    # Slot positions (0-indexed, row 1 = slots 0-8)
+    add-member-slot: 0
+    remove-member-slot: 1
+    add-manager-slot: 2
+    remove-manager-slot: 3
+    buy-time-slot: 4
+    # Transfer Owner sits at the far right of row 1 — owner-only button
+    transfer-owner-slot: 8
+
+    # Glass pane separator row (row 2, slots 9-17)
+    glass-pane-slots: [9,10,11,12,13,14,15,16,17]
+
+    # Player heads start at row 3 (slot 18)
+    heads-start-slot: 18
+
+    items:
+      add-member:
+        material: PLAYER_HEAD
+        name: "&a+ Add Member"
+        lore:
+          - "&7Click to add a member to this plot"
+      remove-member:
+        material: PLAYER_HEAD
+        name: "&c- Remove Member"
+        lore:
+          - "&7Click to remove a member from this plot"
+      add-manager:
+        material: NETHER_STAR
+        name: "&b+ Add Manager"
+        lore:
+          - "&7Click to promote a player to manager"
+          - "&7(Owner only)"
+      remove-manager:
+        material: NETHER_STAR
+        name: "&4- Remove Manager"
+        lore:
+          - "&7Click to demote a manager"
+          - "&7(Owner only)"
+      buy-time:
+        material: CLOCK
+        name: "&e+ Buy Time"
+        lore:
+          - "&7Cost: &f{cost} items &7per day"
+          - "&7Max: &f{max} days"
+          - "&7Click to add 1 day"
+      # Transfer Owner — visible to the plot owner only
+      transfer-owner:
+        material: PAPER
+        name: "&6Transfer Ownership"
+        lore:
+          - "&7Transfer this plot to another player."
+          - "&7The new owner gains full control."
+          - "&7You will be removed from the plot."
+          - ""
+          - "&eClick to initiate transfer (owner only)"
+      filler:
+        material: GRAY_STAINED_GLASS_PANE
+        name: " "
+
+  # ── Buy GUI ────────────────────────────────────────────────────────────────
+  buy-gui:
+    title: "&8Buy Plot: &b{name}"
+    rows: 6
+    emerald-slot: 22
+    items:
+      emerald:
+        material: EMERALD
+        name: "&aBuy Plot"
+        lore:
+          - "&7Price: &f{cost} currency items"
+          - "&7Duration: &f{days} days"
+          - ""
+          - "&eClick to purchase!"
+      filler:
+        material: GRAY_STAINED_GLASS_PANE
+        name: " "
+
+sounds:
+  plot-bought: ENTITY_PLAYER_LEVELUP
+  plot-expired: ENTITY_WITHER_DEATH
+  gui-click: UI_BUTTON_CLICK
+  sign-registered: BLOCK_NOTE_BLOCK_PLING
+  member-added: ENTITY_EXPERIENCE_ORB_PICKUP
+  member-removed: BLOCK_ANVIL_LAND
+  error: ENTITY_VILLAGER_NO
+  timer-paused: BLOCK_IRON_DOOR_CLOSE
+  timer-unpaused: BLOCK_IRON_DOOR_OPEN
