@@ -1,0 +1,43 @@
+name: PlotPlugin
+version: '${project.version}'
+main: com.plotplugin.PlotPlugin
+api-version: '1.20'
+description: Advanced Plot Management Plugin
+authors: [ PlotPlugin ]
+depend:
+  - WorldGuard
+
+commands:
+  plot:
+    description: Main plot command
+    usage: /plot <subcommand>
+    permission: plotplugin.use
+
+permissions:
+  plotplugin.use:
+    description: Basic plot usage
+    default: true
+  plotplugin.admin:
+    description: Admin plot management
+    default: op
+  plotplugin.create:
+    description: Create plots
+    default: op
+  plotplugin.delete:
+    description: Delete plots
+    default: op
+  plotplugin.transfer:
+    description: Transfer plot ownership
+    default: op
+  plotplugin.setcoin:
+    description: Set currency item
+    default: op
+  plotplugin.whitelist:
+    description: Manage global whitelist/pause
+    default: op
+  plotplugin.paused:
+    description: Pause/unpause plot timers
+    default: op
+  plotplugin.reload:
+    description: Reload PlotPlugin config
+    default: op
