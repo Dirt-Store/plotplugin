@@ -1,0 +1,16 @@
+name: PlotSystem
+version: 1.0.0
+main: mc.dirt.plotsystem.PlotPlugin
+api-version: 1.20
+authors: [DirtMc]
+depend: [WorldGuard]
+
+commands:
+  plot:
+    description: Plot system main command
+    usage: /plot <subcommand>
+
+permissions:
+  plotsystem.admin:
+    description: Access to admin plot commands
+    default: op

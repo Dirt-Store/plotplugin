@@ -1,0 +1,106 @@
+# PlotSystem Configuration
+
+# Currency item definition
+currency:
+  material: EMERALD
+  name: "&aEmerald"
+  lore:
+    - "&7Plot currency"
+
+# Plot pricing
+plot:
+  base-price: 30          # items needed to buy a plot
+  base-days: 3            # days given on initial purchase
+  buy-time-cost: 10       # items per extra day
+  buy-time-max-days: 12   # maximum days a plot can have at once
+
+# GUI titles
+gui-titles:
+  buy: "&2Buy Plot"
+  manage: "&8Manage Plot"
+
+# GUI items — slot is 0-indexed within the 6-row inventory (0–53)
+gui-items:
+  buy-plot:
+    material: EMERALD
+    name: "&aBuy Plot"
+    lore:
+      - "&7Price: &f{price} &7items"
+      - "&7Days: &f{days}"
+    slot: 4
+
+  add-member:
+    material: LIME_DYE
+    name: "&aAdd Member"
+    lore:
+      - "&7Add a player as a member"
+    slot: 0
+
+  remove-member:
+    material: RED_DYE
+    name: "&cRemove Member"
+    lore:
+      - "&7Remove a member from the plot"
+    slot: 1
+
+  add-manager:
+    material: CYAN_DYE
+    name: "&bAdd Manager"
+    lore:
+      - "&7Promote a member to manager"
+    slot: 2
+
+  buy-time:
+    material: CLOCK
+    name: "&eBuy Time"
+    lore:
+      - "&7Cost: &f{cost} &7items per day"
+      - "&7Current days: &f{days}"
+      - "&7Max: &f{max} days"
+    slot: 3
+
+  glass-pane:
+    material: BLACK_STAINED_GLASS_PANE
+    name: " "
+
+# Sign line formats — use {name}, {price}, {days}, {owner} as placeholders
+sign:
+  line1: "&8[&6Plot&8]"
+  line2-available: "&a{price} items"
+  line2-owned: "&c{price} items"
+  line3-available: "&aAvailable"
+  line3-owned: "&cOwned"
+  line4-owned: "&f{days}d &7{owner}"
+
+# Messages — use & for color codes
+messages:
+  no-permission: "&cYou don't have permission to do that."
+  plot-not-found: "&cPlot not found: {name}"
+  region-not-found: "&cWorldGuard region not found: {name}"
+  plot-already-exists: "&cA plot already exists for region: {name}"
+  plot-created: "&aPlot created for region &f{name}&a. Sign given to your hand."
+  sign-in-hand-hint: "&ePlace the sign anywhere — it will be tracked automatically."
+  plot-removed: "&aPlot &f{name}&a has been removed."
+  coin-set: "&aCurrency item set to: &f{item}"
+  no-item-in-hand: "&cYou must hold an item to set as currency."
+  not-owner-or-manager: "&cOnly the owner or a manager can manage this plot."
+  already-member: "&c{player} is already a member of this plot."
+  player-not-found: "&cPlayer &f{player}&c not found."
+  member-added: "&a{player} added as a member."
+  member-removed: "&a{player} removed."
+  member-not-found: "&c{player} is not a member of this plot."
+  manager-added: "&a{player} is now a manager."
+  not-enough-currency: "&cYou need &f{amount}&c more {item}&c to do this."
+  time-bought: "&a{days} day(s) added. Plot now has &f{total}&a days remaining."
+  plot-at-max-days: "&cThis plot is already at max days ({max}). Wait until it drops below."
+  plot-bought: "&aYou bought the plot &f{name}&a for &f{price}&a items! Enjoy &f{days}&a days."
+  plot-expired: "&7Plot &f{name}&7 has expired and is now available again."
+  sign-destroyed: "&cThat sign is protected! Use /plot remove to remove the plot first."
+  cannot-remove-owner: "&cYou cannot remove the owner."
+  managers-cannot-touch-managers: "&cManagers cannot modify other managers."
+  enter-player-name: "&eEnter the player name in chat:"
+  usage-setcoin: "&cUsage: /plot setcoin"
+  usage-create: "&cUsage: /plot create <region>"
+  usage-buy: "&cUsage: /plot buy <regionName>"
+  usage-remove: "&cUsage: /plot remove <region>"
+  usage-manage: "&cUsage: /plot <regionName>"
