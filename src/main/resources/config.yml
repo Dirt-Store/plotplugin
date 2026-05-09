@@ -1,0 +1,157 @@
+# PlotPlugin Configuration
+
+settings:
+  # Maximum number of days a plot can be owned
+  max-duration-days: 12
+  # Base purchase: cost and days granted
+  buy-cost: 30
+  buy-days: 3
+  # Renewal cost per day
+  renew-cost-per-day: 10
+
+currency:
+  # The currency item (set via /plot setcoin)
+  # Stored as serialized ItemMeta - do not edit manually
+  item: null
+
+messages:
+  prefix: "&8[&bPlot&8] &r"
+  # ── Plot operations ──
+  plot-created:        "&a✔ Plot &e{name} &acreated successfully."
+  plot-deleted:        "&a✔ Plot &e{name} &adeleted."
+  plot-not-found:      "&c✘ Plot &e{name} &cnot found."
+  plot-already-exists: "&c✘ A plot named &e{name} &calready exists."
+  region-not-found:    "&c✘ WorldGuard region &e{name} &cnot found."
+  plot-expired:        "&c⌛ Plot &e{name} &chas expired."
+  transferred:         "&a✔ Plot &e{name} &atransferred to &e{player}&a."
+  # ── Purchase & renewal ──
+  bought:              "&a✔ You purchased plot &e{name} &afor &e{cost} &acurrency items. Duration: &e{days} &adays."
+  not-enough-currency: "&c✘ You need &e{cost} &ccurrency items to buy this plot."
+  plot-not-available:  "&c✘ This plot is not available for purchase."
+  renew-success:       "&a✔ Renewed plot &e{name} &afor &e{days} &aday(s). Cost: &e{cost} &acurrency items."
+  max-duration:        "&c✘ This plot is already at the maximum duration of &e{max} &cdays."
+  # ── Members & managers ──
+  member-added:        "&a✔ Added &e{player} &aas a member of plot &e{name}&a."
+  member-removed:      "&a✔ Removed &e{player} &afrom plot &e{name}&a."
+  manager-added:       "&a✔ Added &e{player} &aas a manager of plot &e{name}&a."
+  manager-removed:     "&a✔ Removed &e{player} &afrom managers of plot &e{name}&a."
+  already-member:      "&c✘ &e{player} &cis already a member."
+  not-member:          "&c✘ &e{player} &cis not a member."
+  already-manager:     "&c✘ &e{player} &cis already a manager."
+  not-manager:         "&c✘ &e{player} &cis not a manager."
+  cannot-manage-owner: "&c✘ You cannot manage the owner or other managers."
+  # ── Permissions ──
+  no-permission:       "&c✘ You do not have permission to do that."
+  not-owner:           "&c✘ You are not the owner of this plot."
+  not-owner-or-manager:"&c✘ You are not the owner or a manager of this plot."
+  player-not-found:    "&c✘ Player &e{player} &cnot found."
+  # ── Sign & currency ──
+  break-sign:          "&eBreak a sign to register it as the plot sign."
+  sign-registered:     "&a✔ Sign registered for plot &e{name}&a."
+  sign-break-denied:   "&c✘ You cannot break this sign. Use /plot delete first."
+  plot-sign-missing:   "&c✘ This plot has no sign registered."
+  coin-set:            "&a✔ Currency item set successfully."
+  coin-not-set:        "&c✘ No currency item set. Use /plot setcoin."
+  no-item-in-hand:     "&c✘ You must be holding an item."
+  # ── Timer ──
+  timer-paused:        "&a✔ Timer for plot &e{name} &ahas been paused."
+  timer-unpaused:      "&a✔ Timer for plot &e{name} &ahas been resumed."
+  whitelist-enabled:   "&a✔ Global whitelist enabled. All timers paused."
+  whitelist-disabled:  "&a✔ Global whitelist disabled. All timers resumed."
+  # ── Input ──
+  input-member-name:   "&ePlease type the player name in chat..."
+  input-cancelled:     "&cInput cancelled."
+
+sign:
+  # Lines displayed on the sign
+  # ─────────────────────────────
+  # السطر الأول: حالة البلوت
+  line-available: "&a✦ للبيع ✦"
+  line-owned:     "&c✦ مملوك ✦"
+  line-paused:    "&6✦ مدفوع ✦"
+  line-fixed:     "&9✦ ثابت ✦"
+  # السطر الثاني: السعر
+  line-price:     "&e⛃ {price} عملة"
+  # السطر الثالث: اسم المالك
+  line-owner:     "&7▶ &f{owner}"
+  # السطر الرابع: الوقت المتبقي
+  line-time:      "&7⏱ &f{time}"
+  # لما ما في بيانات
+  line-none:      "&8---"
+
+gui:
+  # Plot view GUI
+  plot-gui:
+    title: "&8Plot: &b{name}"
+    rows: 6
+    # Slot positions (0-indexed)
+    add-member-slot: 0
+    remove-member-slot: 1
+    add-manager-slot: 2
+    remove-manager-slot: 3
+    buy-time-slot: 4
+    # Glass pane row (row 2 = index 1, slots 9-17)
+    glass-pane-slots: [9,10,11,12,13,14,15,16,17]
+    # Player heads start at row 3 (slot 18)
+    heads-start-slot: 18
+
+    items:
+      add-member:
+        material: PLAYER_HEAD
+        name: "&a+ Add Member"
+        lore:
+          - "&7Click to add a member"
+      remove-member:
+        material: PLAYER_HEAD
+        name: "&c- Remove Member"
+        lore:
+          - "&7Click to remove a member"
+      add-manager:
+        material: NETHER_STAR
+        name: "&b+ Add Manager"
+        lore:
+          - "&7Click to add a manager"
+      remove-manager:
+        material: NETHER_STAR
+        name: "&4- Remove Manager"
+        lore:
+          - "&7Click to remove a manager"
+      buy-time:
+        material: CLOCK
+        name: "&e+ Buy Time"
+        lore:
+          - "&7Cost: &f{cost} items &7per day"
+          - "&7Max: &f{max} days"
+          - "&7Click to add 1 day"
+      filler:
+        material: GRAY_STAINED_GLASS_PANE
+        name: " "
+
+  # Buy GUI
+  buy-gui:
+    title: "&8Buy Plot: &b{name}"
+    rows: 6
+    emerald-slot: 22
+    items:
+      emerald:
+        material: EMERALD
+        name: "&aBuy Plot"
+        lore:
+          - "&7Price: &f{cost} currency items"
+          - "&7Duration: &f{days} days"
+          - ""
+          - "&eClick to purchase!"
+      filler:
+        material: GRAY_STAINED_GLASS_PANE
+        name: " "
+
+sounds:
+  plot-bought: ENTITY_PLAYER_LEVELUP
+  plot-expired: ENTITY_WITHER_DEATH
+  gui-click: UI_BUTTON_CLICK
+  sign-registered: BLOCK_NOTE_BLOCK_PLING
+  member-added: ENTITY_EXPERIENCE_ORB_PICKUP
+  member-removed: BLOCK_ANVIL_LAND
+  error: ENTITY_VILLAGER_NO
+  timer-paused: BLOCK_IRON_DOOR_CLOSE
+  timer-unpaused: BLOCK_IRON_DOOR_OPEN
