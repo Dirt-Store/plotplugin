@@ -1,0 +1,46 @@
+name: PlotDirt
+version: '${project.version}'
+main: com.plotdirt.PlotDirt
+api-version: '1.21'
+description: Advanced Plot Management Plugin
+authors: [ PlotDirt ]
+depend:
+  - WorldGuard
+
+commands:
+  plot:
+    description: Main plot command
+    usage: /plot <subcommand>
+    permission: plotdirt.use
+
+permissions:
+  plotdirt.use:
+    description: Basic plot usage
+    default: true
+  plotdirt.admin:
+    description: Admin plot management
+    default: op
+  plotdirt.create:
+    description: Create plots
+    default: op
+  plotdirt.delete:
+    description: Delete plots
+    default: op
+  plotdirt.transfer:
+    description: Transfer plot ownership
+    default: op
+  plotdirt.setcoin:
+    description: Set currency item
+    default: op
+  plotdirt.whitelist:
+    description: Manage global whitelist/pause
+    default: op
+  plotdirt.paused:
+    description: Pause/unpause plot timers
+    default: op
+  plotdirt.reload:
+    description: Reload PlotDirt config
+    default: op
+  plotdirt.bypass-limit:
+    description: Bypass the max-plots-per-player limit (buy unlimited plots)
+    default: op
